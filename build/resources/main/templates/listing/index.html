@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Listings')"></head>
+<body>
+<nav th:replace="layout :: nav"></nav>
+<div th:replace="layout :: flash"></div>
+<div class = "center">
+    <h3 th:text = "${header}"></h3>
+    <div th:each="listing : ${listings}" class="col s12 l4">
+        <a th:href="@{|/listing/${listing.id}|}" class="actions">
+            <ul>
+                <li><img th:src = "@{|/listing/${listing.id}/photo1|}" onerror="this.onerror=null;
+                this.src='https://www.marcswords.com/wp-content/themes/fearless/images/missing-image-640x360.png';"
+                         class = "thumbnail"/></li>
+                <li th:text = "${listing.title}"></li>
+            </ul>
+        </a>
+    </div>
+</div>
+</body>
+</html>

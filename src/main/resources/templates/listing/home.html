@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Home')"></head>
+<body>
+<nav th:replace="layout :: nav"></nav>
+<div class = "center">
+    <h3 th:text="${headingBrowse}"></h3>
+    <form th:action="@{${actionBrowse}}" method = "get">
+        <ul><li class = "list-vert">
+            <select th:name="categoryName" th:id = "category">
+                <option value="" disabled="disabled">Select a category</option>
+                <option value="All">All Listings</option>
+                <option th:each="cat : ${categories}" th:value="${cat.name}" th:text="${cat.name}">Category</option>
+            </select>
+        </li>
+            <li>
+                <button th:text="${submitBrowse}" type="submit" class = "reg-button">Browse</button>
+            </li></ul>
+    </form>
+    <h3 th:text="${headingNew}"></h3>
+        <form th:action="@{${actionNew}}">
+                <ul><li class = "list-vert">
+                    <button th:text="${submitNew}" type="submit" class = "reg-button">Create new listing</button>
+                </li></ul>
+        </form>
+</div>
+</body>
+</html>

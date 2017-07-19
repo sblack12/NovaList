@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Form')"></head>
+<body>
+<div th:replace="layout :: scripts"></div>
+<nav th:replace="layout :: nav"></nav>
+<div th:replace="layout :: flash"></div>
+<div class="center">
+    <h1 th:text="${heading}"></h1>
+    <form id = "listingForm" th:action="@{${action}}" method="post" th:object="${listing}" enctype="multipart/form-data"
+          onSubmit = "return validate()">
+        <input type="hidden" th:field="*{id}"/>
+        <input id = "title" type="text" th:field="*{title}" placeholder="Title"/>
+        <p id = "titleError" class = "formError center">
+            Title must be between 3 and 100 characters long and cannot being with a space.</p>
+        <textarea id = "description" th:field="*{description}" placeholder="Description"></textarea>
+        <p id = "descriptionError" class = "formError center">
+            Description must be between 3 and 5000 characters long and cannot begin with a space.</p>
+        <h5>Select category</h5>
+        <select id = "category" th:field="*{category.id}">
+            <option value="" disabled="disabled">Select a category</option>
+            <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}">Category</option>
+        </select>
+        <h5>Select up to 5 photos to include in your listing</h5>
+        <div>
+            <input type="file" id="file1" name="file1" accept="image/*" data-type='image'/>
+        </div>
+        <div>
+            <input type="file" id="file2" name="file2" accept="image/*" data-type='image'/>
+        </div>
+        <div>
+            <input type="file" id="file3" name="file3" accept="image/*" data-type='image'/>
+        </div>
+        <div>
+            <input type="file" id="file4" name="file4" accept="image/*" data-type='image'/>
+        </div>
+        <div>
+            <input type="file" id="file5" name="file5" accept="image/*" data-type='image'/>
+        </div>
+        <p id = "photoErrorType" class = "formError center">Photos must be either a .gif, .png, or .jpg file.</p>
+        <button class = "reg-button" th:text="${submit}" type="submit"></button>
+    </form>
+</div>
+</body>
+</html>

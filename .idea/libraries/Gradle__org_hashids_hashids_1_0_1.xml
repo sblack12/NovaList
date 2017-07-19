@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.hashids:hashids:1.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hashids/hashids/1.0.1/13a1831f6666ab7822e9e8e28ecba33fc53d18ec/hashids-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hashids/hashids/1.0.1/32058ea00bf6d51e74572c3c8f6a83318f2b2a1/hashids-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Resend Confirmation Link')"></head>
+<body>
+<div th:replace="layout :: flash"></div>
+<h1>Enter your email below to resend confirmation link.</h1>
+<form th:action="@{${action}}" method="post" class="login">
+    <input type = "text" th:name="email" placeholder="email"/>
+    <button th:text = "${submit}" type="submit">Resend</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta description="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href="@{https://dl.dropbox.com/s/qznybvyzdrfedk4/style.css?dl=0}" type = "text/css"/>
+    <link rel="stylesheet" th:href="@{https://dl.dropbox.com/s/ng1zgaq99oi9gi7/materialize.css?dl=0}" />
+    <link rel="stylesheet" th:href="@{https://dl.dropbox.com/s/w6v6ffmllgymoqx/cs-select.css?dl=0}" />
+    <link rel="stylesheet" th:href="@{https://dl.dropbox.com/s/t2vcp8xa6chmll9/cs-skin-border.css?dl=0}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <title th:text="'NovaList | ' + ${page_title}">NovaList</title></head>
+<body>
+
+<nav th:fragment="nav">
+    <div class="container">
+        <div class="nav-wrapper">
+                <a href="/home" class="brand-logo">NovaList</a>
+            <ul class="right">
+                <li>
+                    <form class="logout inline" th:action="@{/mylistings}" method="post">
+                        <button type="submit">My Listings</button>
+                    </form>
+                </li>
+                <li>
+                    <form class="logout inline" th:action="@{/logout}" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <button type="submit" th:text = "'Log out ' + ${#authentication.name}"></button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div th:fragment="flash" th:if="${flash != null}" class="container center">
+    <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"></div>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script th:src="@{https://dl.dropbox.com/s/717mif5opb2krzh/scripts.js?dl=0}"></script>
+</div>
+
+</body>
+</html>

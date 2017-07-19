@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Login')"></head>
+<body>
+<nav th:fragment="nav">
+    <div class="container">
+        <div class="nav-wrapper">
+                <a href="/home" class="brand-logo">NovaList</a>
+            <ul class="right">
+                <li>
+                    <form class="logout inline" th:action="@{/forgotpassword}" method="post">
+                        <button type="submit">Forgot Password?</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div th:replace="layout :: flash"></div>
+<div th:fragment="loginError" th:if="${loginError != null}" class="container center">
+    <div th:classappend="${#strings.toLowerCase(loginError.status)}" th:text="${loginError.message}" class="flash"></div>
+</div>
+<div class = "center">
+<h3 th:text="${headingLogin}"></h3>
+<form th:action="@{${actionLogin}}" th:object="${user}" method="post" class="login">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <ul>
+        <li class = "vert-list"><input type = "text" th:name = "username" th:field="*{username}" placeholder="email"/></li>
+        <li class = "vert-list"><input type="password" th:field="*{password}" placeholder="password"/></li>
+        <li class = "vert-list"><button class = "reg-button" th:text = "${submitLogin}" type="submit">Login</button></li>
+    </ul>
+</form>
+<h3 th:text="${headingSignup}"></h3>
+<form th:action="@{${actionSignup}}" th:object="${user}" method="post" class="login">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="hidden" th:field="*{id}"/>
+    <ul>
+        <li class = "vert-list"><input type = "text" th:field="*{username}" placeholder="email"/></li>
+        <li class = "vert-list"><input type="password" th:field="*{password}" placeholder="password"/></li>
+        <li class = "vert-list"><input type="password" th:name="passwordConfirm" placeholder="confirm password"/></li>
+        <li class = "vert-list"><button class = "reg-button" th:text = "${submitSignup}" type="submit">Sign up</button></li>
+    </ul>
+</form>
+</div>
+</body>
+</html>

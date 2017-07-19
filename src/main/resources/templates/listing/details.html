@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('Listing')"></head>
+<body>
+<nav th:replace="layout :: nav"></nav>
+<div class = "center">
+    <h3 th:text="${listing.title}"></h3>
+    <h5 th:text = "${listing.description}"></h5>
+    <img id = "photo1" th:src="@{|/listing/${listing.id}/photo1|}" onclick="modalFunction(this)"
+         onerror="this.style.display = 'none'" alt = "Photo 1" class = "photoDisplay"/>
+    <div class = "modal">
+        <span class = "close">&times;</span>
+        <img class = "modal-content"/>
+    </div>
+    <img id = "photo2" th:src="@{|/listing/${listing.id}/photo2|}" onclick="modalFunction(this)"
+         onerror="this.style.display = 'none'" alt = "Photo 2" class = "photoDisplay"/>
+    <div id = "modal2" class = "modal">
+        <span class = "close">&times;</span>
+        <img class = "modal-content"/>
+    </div>
+    <img id = "photo3" th:src="@{|/listing/${listing.id}/photo3|}" onclick="modalFunction(this)"
+         onerror="this.style.display = 'none'" alt = "Photo 3" class = "photoDisplay"/>
+    <div class = "modal">
+        <span class = "close">&times;</span>
+        <img class = "modal-content"/>
+    </div>
+    <img id = "photo4" th:src="@{|/listing/${listing.id}/photo4|}" onclick="modalFunction(this)"
+         onerror="this.style.display = 'none'" alt = "Photo 4" class = "photoDisplay"/>
+    <div class = "modal">
+        <span class = "close">&times;</span>
+        <img class = "modal-content"/>
+    </div>
+    <img id = "photo5" th:src="@{|/listing/${listing.id}/photo5|}" onclick="modalFunction(this)"
+         onerror="this.style.display = 'none'" alt = "Photo 5" class = "photoDisplay"/>
+    <div class = "modal">
+        <span class = "close">&times;</span>
+        <img class = "modal-content"/>
+    </div>
+    <h5 th:text="|Category: ${listing.category.name}|"></h5>
+    <h5 th:text="|Uploaded / Last edited ${listing.timeSinceUploaded} ago by ${listing.user.username}|"></h5>
+    <span th:if="${lister}">
+        <ul>
+            <li class="inline">
+                <form th:action="@{|/listing/${listing.id}/edit|}" method="get">
+                    <button type="submit" class = "reg-button">Edit</button>
+                </form>
+            </li>
+            <li class="inline">
+                <form th:action="@{|/listing/${listing.id}/delete|}" method="post">
+                    <button type="submit" class = "reg-button">Delete</button>
+                </form>
+            </li>
+        </ul>
+    </span>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>
